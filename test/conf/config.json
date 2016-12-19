@@ -1,0 +1,4 @@
+{
+  "repository_config" : "repository.json",
+  "repository_tool_config" : "svnserver.json"
+}

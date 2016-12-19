@@ -1,0 +1,15 @@
+{
+  "default_repository_conf" : {
+    "url": "default_url",
+    "username" : "default_username",
+    "password" : "default_password"
+  },
+  "repositories" : [
+    {
+      "code" : "test_repository",
+      "description" : "Test Repository",
+      "conf": {
+      }
+    }
+  ]
+}

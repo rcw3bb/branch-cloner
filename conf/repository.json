@@ -1,0 +1,24 @@
+{
+  "default_repository_conf" : {
+    "work_dir" : "./repositories/ant",
+    "url": "url",
+    "username" : "username",
+    "password" : "password"
+  },
+  "repositories" : [
+    {
+      "code" : "pc",
+      "description" : "Policy Center",
+      "conf": {
+        "url": "http://dev0005:8091/fmg/PC/7.0/branches/pnp/ant"
+      }
+    },
+    {
+      "code" : "bc",
+      "description" : "Billing Center",
+      "conf": {
+        "url": "http://dev0005:8091/fmg/BC/7.0/branches/pnp/ant"
+      }
+    }
+  ]
+}

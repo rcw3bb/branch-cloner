@@ -1,0 +1,13 @@
+{
+  "bin-1" : "C:/Program Files (x86)/Subversion/bin/svn.exe",
+  "command" : {
+    "checkout": {
+      "cmd" : "bin-1",
+      "args" : "co \"%url%\" \"%work_dir%\""
+    },
+    "update": {
+      "cmd" : "bin-1",
+      "args" : "update \"%work_dir%\""
+    }
+  }
+}

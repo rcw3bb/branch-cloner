@@ -1,0 +1,19 @@
+{
+  "default_repository_conf" : {
+    "work_dir" : "./repositories",
+    "url": "url",
+    "username" : "username",
+    "password" : "password"
+  },
+  "repositories" : [
+    {
+      "code" : "test_repository",
+      "description" : "Test Repository",
+      "conf": {
+        "url": "url",
+        "username": "username",
+        "password": "password"
+      }
+    }
+  ]
+}

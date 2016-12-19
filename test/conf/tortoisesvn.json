@@ -1,0 +1,9 @@
+{
+  "bin-1" : "C:/Program Files/TortoiseSVN/bin/TortoiseProc.exe",
+  "command" : {
+    "checkout": {
+      "cmd" : "bin-1",
+      "args" : "/command:checkout /path:\"%work_dir%\" /url:\"%url%\" /closeonend:2"
+    }
+  }
+}
