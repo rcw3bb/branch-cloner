@@ -30,7 +30,9 @@ cfg.repositories.each do |repo|
   puts cmd
 
   Open3.popen3(cmd) do |stdin, stdout, stderr, wait_thr|
-    puts stdout.read
+    while line = stdout.gets
+      puts line
+    end
     exit_status = wait_thr.value
     unless exit_status.success?
       puts "FAILED #{cmd}"
