@@ -1,9 +1,9 @@
+require 'json'
+require 'pathname'
+
 module BranchCloner
 
   class Config
-    require 'json'
-    require 'pathname'
-
     attr_reader :config_filename
     attr_reader :config
     attr_reader :repositories
