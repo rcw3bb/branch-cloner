@@ -41,6 +41,4 @@ cfg.repositories.each do |repo|
   puts '-----'
 end
 
-puts $0
-
 puts "Done"
