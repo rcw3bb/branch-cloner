@@ -48,32 +48,32 @@ class ConfigTest < Test::Unit::TestCase
     assert_equal conf[BranchCloner::Config::ATTR_PASSWORD], 'password'
   end
 
-  def test_get_attribute
+  def test_get_attr
     assert_equal getConfig.getRepoAttribute('test_repository', BranchCloner::Config::ATTR_CODE), 'test_repository'
     assert_equal getConfig.getRepoAttribute('test_repository', BranchCloner::Config::ATTR_DESCRIPTION), 'Test Repository'
   end
 
-  def test_get_attribute_conf
+  def test_get_attr_conf
     assert_equal getConfig.getRepoAttributeConf('test_repository', BranchCloner::Config::ATTR_URL), 'url'
     assert_equal getConfig.getRepoAttributeConf('test_repository', BranchCloner::Config::ATTR_USERNAME), 'username'
     assert_equal getConfig.getRepoAttributeConf('test_repository', BranchCloner::Config::ATTR_PASSWORD), 'password'
   end
 
-  def test_get_attribute_default_conf
+  def test_get_attr_default_conf
     config = 'config-default.json'
     assert_equal getConfig(config).getRepoAttributeConf('test_repository', BranchCloner::Config::ATTR_URL), 'default_url'
     assert_equal getConfig(config).getRepoAttributeConf('test_repository', BranchCloner::Config::ATTR_USERNAME), 'default_username'
     assert_equal getConfig(config).getRepoAttributeConf('test_repository', BranchCloner::Config::ATTR_PASSWORD), 'default_password'
   end
 
-  def test_get_attribute_default_no_conf
+  def test_get_attr_default_no_conf
     config = 'config-no-conf.json'
     assert_equal getConfig(config).getRepoAttributeConf('test_repository', BranchCloner::Config::ATTR_URL), 'no_conf_url'
     assert_equal getConfig(config).getRepoAttributeConf('test_repository', BranchCloner::Config::ATTR_USERNAME), 'no_conf_username'
     assert_equal getConfig(config).getRepoAttributeConf('test_repository', BranchCloner::Config::ATTR_PASSWORD), 'no_conf_password'
   end
 
-  def test_get_attribute_default_no_conf_with_override
+  def test_get_attr_def_no_conf_over
     config = 'config-no-conf.json'
     assert_equal getConfig(config).getRepoAttributeConf('test_repository2', BranchCloner::Config::ATTR_URL), 'with_url'
     assert_equal getConfig(config).getRepoAttributeConf('test_repository2', BranchCloner::Config::ATTR_USERNAME), 'no_conf_username'
