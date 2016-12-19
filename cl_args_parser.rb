@@ -33,7 +33,7 @@ module BranchCloner
       opt_parser.parse!(options)
 
       args.config = 'config.json' if args.config==nil
-      args.mode = BranchCloner::Config::CMD_CHECKOUT if args.mode==nil
+      args.mode = BranchCloner::Config::CMD_UPDATE if args.mode==nil
       args.group = true if args.group==nil
 
       return args
