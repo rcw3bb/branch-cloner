@@ -3,7 +3,11 @@
   "command" : {
     "checkout": {
       "cmd" : "bin-1",
-      "args" : "/command:checkout /path:\"%PATH%\" /url:\"%URL%\" /closeonend:2"
+      "args" : "/command:checkout /path:\"%work_dir%\" /url:\"%url%\" /closeonend:1"
+    },
+    "update": {
+      "cmd" : "bin-1",
+      "args" : "/command:update /path:\"%work_dir%\" /closeonend:3"
     }
   }
 }

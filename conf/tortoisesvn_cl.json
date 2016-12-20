@@ -1,0 +1,13 @@
+{
+  "bin-1" : "C:/Program Files/TortoiseSVN/bin/svn.exe",
+  "command" : {
+    "checkout": {
+      "cmd" : "bin-1",
+      "args" : "checkout --depth infinity \"%url%\" \"%work_dir%\""
+    },
+    "update": {
+      "cmd" : "bin-1",
+      "args" : "update --depth infinity \"%work_dir%\""
+    }
+  }
+}

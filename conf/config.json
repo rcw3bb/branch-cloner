@@ -1,4 +1,4 @@
 {
   "repository_config" : "repository.json",
-  "repository_tool_config" : "svnserver.json"
+  "repository_tool_config" : "tortoisesvn_cl.json"
 }
