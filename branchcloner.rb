@@ -1,10 +1,10 @@
-require_relative 'cl_args_parser'
-require_relative 'config'
+require_relative 'lib/cl_args_parser'
+require_relative 'lib/config'
 require 'open3'
 require 'fileutils'
 
 options = BranchCloner::Parser.parse ARGV
-cfg = BranchCloner::Config.new options.config
+cfg = BranchCloner::Config.new options
 
 cfg.repositories.each do |repo|
   code = repo[BranchCloner::Config::ATTR_CODE]

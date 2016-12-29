@@ -1,5 +1,6 @@
 require 'json'
 require 'pathname'
+require_relative 'cl_args_parser'
 
 module BranchCloner
 
@@ -8,34 +9,35 @@ module BranchCloner
     attr_reader :config
     attr_reader :repositories
 
+    CMD_CHECKOUT = 'checkout'
+    CMD_UPDATE = 'update'
+
+    MODES = {'checkout' => CMD_CHECKOUT,
+             'update' => CMD_UPDATE
+    }
+
+    ATTR_REPO_CONFIG = 'repository_config'
+    ATTR_REPO_TOOL_CONFIG = 'repository_tool_config'
+    ATTR_CODE = 'code'
+    ATTR_DESCRIPTION = 'description'
+    ATTR_USERNAME = 'username'
+    ATTR_PASSWORD = 'password'
+    ATTR_URL = 'url'
+    ATTR_CONF = 'conf'
+    ATTR_WORKING_DIR = 'work_dir'
+
     @@CONF_DIR = 'conf'
     @@ATTR_DEFAULT_REPO_CONF = 'default_repository_conf'
     @@ATTR_REPOSITORIES = 'repositories'
 
-    def loadConfig
-      filename = File.join(Dir.pwd,@@CONF_DIR,@config_filename)
-
-      if File.exist?(filename)
-        File.open(filename, 'r') do |file|
-          content = file.read
-
-          #FIXME: capture error.
-
-          @config = JSON.parse(content)
-          loadRepositories
-          loadToolConfig
-        end
-      end
-    end
-    private :loadConfig
-
     def loadRepositories
-      filename = File.join(Dir.pwd,@@CONF_DIR,@config[ATTR_REPO_CONFIG])
+      filename = File.join(Dir.pwd,@@CONF_DIR,@repositories_file)
       if File.exist?(filename)
         File.open(filename, 'r') do |file|
           content = file.read
 
-          #FIXME: capture error.
+          #TODO: capture error.
+          #TODO: possible to DRY.
 
           repos = JSON.parse(content)
 
@@ -46,23 +48,27 @@ module BranchCloner
     end
     private :loadRepositories
 
-    def loadToolConfig
-      filename = File.join(Dir.pwd,@@CONF_DIR,@config[ATTR_REPO_TOOL_CONFIG])
+    def loadCommands
+      filename = File.join(Dir.pwd,@@CONF_DIR,@commands_file)
       if File.exist?(filename)
         File.open(filename, 'r') do |file|
           content = file.read
 
-          #FIXME: capture error.
+          #TODO: capture error.
+          #TODO: possible to DRY.
 
           @command = JSON.parse(content)
         end
       end
     end
-    private :loadToolConfig
+    private :loadCommands
 
-    def initialize(filename = 'config.json')
-      @config_filename = filename
-      loadConfig
+    def initialize(options)
+      @commands_file = options[BranchCloner::Parser::ATTR_COMMANDS]
+      @repositories_file = options[BranchCloner::Parser::ATTR_REPOSITORIES]
+
+      loadCommands
+      loadRepositories
     end
 
     def getRepoAttribute(code, attrName)
@@ -109,25 +115,4 @@ module BranchCloner
       finalizeCommand(code, whole_command, grp)
     end
   end
-
-  #Config Constants
-  class Config
-    CMD_CHECKOUT = 'checkout'
-    CMD_UPDATE = 'update'
-
-    MODES = {'checkout' => CMD_CHECKOUT,
-      'update' => CMD_UPDATE
-    }
-
-    ATTR_REPO_CONFIG = 'repository_config'
-    ATTR_REPO_TOOL_CONFIG = 'repository_tool_config'
-    ATTR_CODE = 'code'
-    ATTR_DESCRIPTION = 'description'
-    ATTR_USERNAME = 'username'
-    ATTR_PASSWORD = 'password'
-    ATTR_URL = 'url'
-    ATTR_CONF = 'conf'
-    ATTR_WORKING_DIR = 'work_dir'
-  end
-
 end
