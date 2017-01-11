@@ -1,0 +1,52 @@
+description: Logging configuration
+---
+# *** YAML2LOG4R ***
+log4r_config:
+  # define all pre config ...
+  pre_config:
+    custom_levels:
+      - DEBUG
+      - INFO
+      - WARN
+      - ERROR
+      - FATAL
+    global:
+      level: INFO
+    root  :
+      level: DEBUG
+
+  # define all loggers ...
+  loggers:
+    - name      : branchcloner
+      level     : DEBUG
+      additive  : 'false'
+      trace     : 'false'
+      outputters:
+        - stdout
+        - logfile
+
+  # define all outputters (incl. formatters)
+  outputters:
+    - type     : StdoutOutputter
+      name     : stdout
+      level    : DEBUG
+      only_at  :
+        - INFO
+        - WARN
+        - ERROR
+        - FATAL
+      formatter:
+        date_pattern: '%y%m%d %H:%M:%S'
+        pattern     : '%m'
+        type        : PatternFormatter
+
+    - type        : DateFileOutputter
+      name        : logfile
+      level       : DEBUG
+      date_pattern: '%Y%m%d'
+      trunc       : 'false'
+      dirname     : "#{HOME}/logs"
+      formatter   :
+        date_pattern: '%y%m%d %H:%M:%S'
+        pattern     : '%d %5l %5.5X{:code} : %m'
+        type        : PatternFormatter
