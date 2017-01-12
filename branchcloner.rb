@@ -66,25 +66,15 @@ def self.processRepo(cfg, options, repo)
   Log4r::MDC.put(:code, nil)
 end
 
-#thr = nil
-
 cfg.repositories.each do |repo|
 
   THREAD_POOL_EXECUTOR.post {
     self.processRepo(cfg, options, repo)
   }
 
-=begin
-  thr = Thread.new {
-    self.processRepo cfg, options, repo
-  }
-=end
-
 end
 
 THREAD_POOL_EXECUTOR.shutdown
 THREAD_POOL_EXECUTOR.wait_for_termination
 
-#thr.join
-
-puts "Done"
+LOG.info "Done"

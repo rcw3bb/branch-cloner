@@ -35,49 +35,36 @@ module BranchCloner
     @@ATTR_DEFAULT_REPO_CONF = 'default_repository_conf'
     @@ATTR_REPOSITORIES = 'repositories'
 
-    def loadRepositories
-      filename = File.join(Dir.pwd,@@CONF_DIR,@repositories_file)
+    def self.loadFile(pFileName, &block)
+      filename = File.join(Dir.pwd,@@CONF_DIR,pFileName)
       if File.exist?(filename)
         File.open(filename, 'r') do |file|
           content = file.read
-
-          #TODO: capture error.
-          #TODO: possible to DRY.
-
-          repos = JSON.parse(content)
-
-          @default_repo = repos[@@ATTR_DEFAULT_REPO_CONF]
-          @repositories = repos[@@ATTR_REPOSITORIES]
+          block.call content if block
         end
+      end
+    end
+
+    def loadRepositories
+      Config.loadFile @repositories_file do |content|
+        repos = JSON.parse(content)
+
+        @default_repo = repos[@@ATTR_DEFAULT_REPO_CONF]
+        @repositories = repos[@@ATTR_REPOSITORIES]
       end
     end
     private :loadRepositories
 
     def loadCommands
-      filename = File.join(Dir.pwd,@@CONF_DIR,@commands_file)
-      if File.exist?(filename)
-        File.open(filename, 'r') do |file|
-          content = file.read
-
-          #TODO: capture error.
-          #TODO: possible to DRY.
-
-          @command = JSON.parse(content)
-        end
+      Config.loadFile @commands_file do |content|
+        @command = JSON.parse(content)
       end
     end
     private :loadCommands
 
     def loadThreadPool
-      filename = File.join(Dir.pwd,@@CONF_DIR,'thread_pool.json')
-
-      if File.exist?(filename)
-        File.open(filename, 'r') do |file|
-          content = file.read
-
-          #FIXME: capture error.
-          @thread_pool = JSON.parse(content)
-        end
+      Config.loadFile 'thread_pool.json' do |content|
+        @thread_pool = JSON.parse(content)
       end
     end
     private :loadThreadPool

@@ -20,18 +20,9 @@ module BranchCloner
     @basename = Pathname.new($0).basename
 
     def self.loadDefault
-      filename = File.join(Dir.pwd,@@CONF_DIR,'default.json')
-
-      if File.exist?(filename)
-        File.open(filename, 'r') do |file|
-          content = file.read
-
-          #FIXME: capture error.
-
-          conf = JSON.parse(content)
-
-          @default_options = conf[ATTR_COMMAND_OPTIONS]
-        end
+      BranchCloner::Config.loadFile 'default.json' do |content|
+        conf = JSON.parse(content)
+        @default_options = conf[ATTR_COMMAND_OPTIONS]
       end
     end
 

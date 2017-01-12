@@ -13,7 +13,7 @@ log4r_config:
     global:
       level: INFO
     root  :
-      level: DEBUG
+      level: INFO
 
   # define all loggers ...
   loggers:
