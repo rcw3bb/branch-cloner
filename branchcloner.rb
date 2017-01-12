@@ -1,6 +1,8 @@
 require_relative 'lib/cl_args_parser'
 require_relative 'lib/config'
 
+require 'concurrent'
+
 require 'open3'
 require 'fileutils'
 require 'log4r'
@@ -16,6 +18,14 @@ LOG = Log4r::Logger['branchcloner']
 
 options = BranchCloner::Parser.parse ARGV
 cfg = BranchCloner::Config.new options
+
+THREAD_POOL_EXECUTOR = Concurrent::ThreadPoolExecutor.new({
+    :min_threads=>cfg.thread_pool[BranchCloner::Config::ATTR_MIN_THREADS],
+    :max_threads=>cfg.thread_pool[BranchCloner::Config::ATTR_MAX_THREADS],
+    :max_queue=>cfg.thread_pool[BranchCloner::Config::ATTR_MAX_QUEUE],
+    :idletime=>cfg.thread_pool[BranchCloner::Config::ATTR_THREAD_IDLETIME],
+    :fallback_policy=>:caller_runs
+})
 
 def self.processRepo(cfg, options, repo)
   code = repo[BranchCloner::Config::ATTR_CODE]
@@ -53,16 +63,28 @@ def self.processRepo(cfg, options, repo)
   end
 
   LOG.info '-----'
+  Log4r::MDC.put(:code, nil)
 end
 
-thr = nil
+#thr = nil
 
 cfg.repositories.each do |repo|
+
+  THREAD_POOL_EXECUTOR.post {
+    self.processRepo(cfg, options, repo)
+  }
+
+=begin
   thr = Thread.new {
     self.processRepo cfg, options, repo
   }
+=end
+
 end
 
-thr.join
+THREAD_POOL_EXECUTOR.shutdown
+THREAD_POOL_EXECUTOR.wait_for_termination
+
+#thr.join
 
 puts "Done"

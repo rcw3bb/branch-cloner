@@ -8,6 +8,7 @@ module BranchCloner
     attr_reader :config_filename
     attr_reader :config
     attr_reader :repositories
+    attr_reader :thread_pool
 
     CMD_CHECKOUT = 'checkout'
     CMD_UPDATE = 'update'
@@ -25,6 +26,10 @@ module BranchCloner
     ATTR_URL = 'url'
     ATTR_CONF = 'conf'
     ATTR_WORKING_DIR = 'work_dir'
+    ATTR_MIN_THREADS = 'min_threads'
+    ATTR_MAX_THREADS = 'max_threads'
+    ATTR_MAX_QUEUE = 'max_queue'
+    ATTR_THREAD_IDLETIME = 'idletime'
 
     @@CONF_DIR = 'conf'
     @@ATTR_DEFAULT_REPO_CONF = 'default_repository_conf'
@@ -63,12 +68,27 @@ module BranchCloner
     end
     private :loadCommands
 
+    def loadThreadPool
+      filename = File.join(Dir.pwd,@@CONF_DIR,'thread_pool.json')
+
+      if File.exist?(filename)
+        File.open(filename, 'r') do |file|
+          content = file.read
+
+          #FIXME: capture error.
+          @thread_pool = JSON.parse(content)
+        end
+      end
+    end
+    private :loadThreadPool
+
     def initialize(options)
       @commands_file = options[BranchCloner::Parser::ATTR_COMMANDS]
       @repositories_file = options[BranchCloner::Parser::ATTR_REPOSITORIES]
 
       loadCommands
       loadRepositories
+      loadThreadPool
     end
 
     def getRepoAttribute(code, attrName)
