@@ -1,2 +1,0 @@
-Deal with all the fixme and todos.
-Update all the logs levels to INFO.
