@@ -62,7 +62,7 @@ def self.processRepo(cfg, options, repo)
     end
   end
 
-  LOG.info '-----'
+  LOG.info "-- #{code} --"
   Log4r::MDC.put(:code, nil)
 end
 
