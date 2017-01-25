@@ -48,5 +48,5 @@ log4r_config:
       dirname     : "#{HOME}/logs"
       formatter   :
         date_pattern: '%y%m%d %H:%M:%S'
-        pattern     : '%d %5l %5.5X{:code} : %m'
+        pattern     : '%10.10X{:repo}%5l %5.5X{:code} : %m'
         type        : PatternFormatter

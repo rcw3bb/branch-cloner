@@ -15,7 +15,7 @@ module BranchCloner
 
     @@CONF_DIR = 'conf'
 
-    @version = '0.2a'
+    @version = '0.3'
     @program_name = 'Branch Cloner'
     @basename = Pathname.new($0).basename
 

@@ -32,6 +32,7 @@ def self.processRepo(cfg, options, repo)
   description = repo[BranchCloner::Config::ATTR_DESCRIPTION]
 
   Log4r::MDC.put(:code, code)
+  Log4r::MDC.put(:repo, options.repositories)
 
   if options.clean
     work_dir = cfg.getRepoAttributeConf(code, BranchCloner::Config::ATTR_WORKING_DIR)
@@ -64,6 +65,7 @@ def self.processRepo(cfg, options, repo)
 
   LOG.info "-- #{code} --"
   Log4r::MDC.put(:code, nil)
+  Log4r::MDC.put(:repo, nil)
 end
 
 cfg.repositories.each do |repo|
