@@ -1,23 +1,44 @@
 {
   "default_repository_conf" : {
-    "work_dir" : "./repositories/ant",
+    "work_dir" : "../../rc/3.1.10.0",
     "url": "url",
     "username" : "username",
     "password" : "password"
   },
   "repositories" : [
     {
-      "code" : "pc",
-      "description" : "Policy Center",
+      "code" : "ab",
+      "description" : "ContactManager",
       "conf": {
-        "url": "http://dev0005:8091/fmg/PC/7.0/branches/pnp/ant"
+        "url": "http://dev0005:8091/fmg/AB/8.0/branches/base_3.1.10.0-RC1"
       }
     },
     {
       "code" : "bc",
-      "description" : "Billing Center",
+      "description" : "BillingCenter",
       "conf": {
-        "url": "http://dev0005:8091/fmg/BC/7.0/branches/pnp/ant"
+        "url": "http://dev0005:8091/fmg/BC/7.0/branches/base_3.1.10.0-RC1"
+      }
+    },    
+    {
+      "code" : "cc",
+      "description" : "ClaimCenter",
+      "conf": {
+        "url": "http://dev0005:8091/fmg/CC/8.0/branches/base_3.1.10.0-RC1"
+      }
+    },
+    {
+      "code" : "pc",
+      "description" : "PolicyCenter",
+      "conf": {
+        "url": "http://dev0005:8091/fmg/PC/7.0/branches/base_3.1.10.0-RC1"
+      }
+    },
+    {
+      "code" : "shared",
+      "description" : "Shared",
+      "conf": {
+        "url": "http://dev0005:8091/fmg/Shared/7.0/branches/base_3.1.10.0-RC1"
       }
     }
   ]
