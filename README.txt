@@ -1,5 +1,8 @@
 Requirement:
     - TortoiseSVN command line client tools.
 
-gem install concurrent-ruby
-gem install log4r
+1.) Install ruby 2.3
+2.) Run 
+	gem install bundler
+3.) Run
+	bundler install
