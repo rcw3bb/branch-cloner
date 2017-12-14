@@ -1,6 +1,6 @@
 {
-  "min_threads" : 5,
-  "max_threads" : 10,
+  "min_threads" : 1,
+  "max_threads" : 2,
   "max_queue" : 50,
   "idletime" : 60
 }
