@@ -1,6 +1,6 @@
 {
   "default_repository_conf" : {
-    "work_dir" : "../../gw9-src/",
+    "work_dir" : "C:/dev/gw9-src/master/",
     "url": "url",
     "username" : "username",
     "password" : "password"
@@ -10,7 +10,7 @@
       "code" : "ab-configuration",
       "description" : "ContactManager",
       "conf": {
-        "work_dir" : "../../gw9-src/ContactManager/modules/configuration",
+        "work_dir" : "C:/dev/gw9-src/master/ContactManager/configuration",
         "url": "http://prd0074/conrw1/ab.git"
       }
     },
@@ -18,7 +18,7 @@
       "code" : "bc-configuration",
       "description" : "BillingCenter",
       "conf": {
-        "work_dir" : "../../gw9-src/BillingCenter/modules/configuration",
+        "work_dir" : "C:/dev/gw9-src/master/BillingCenter/configuration",
         "url": "http://prd0074/conrw1/bc.git"
       }
     },
@@ -26,7 +26,7 @@
       "code" : "cc-configuration",
       "description" : "ClaimCenter",
       "conf": {
-        "work_dir" : "../../gw9-src/ClaimCenter/modules/configuration",
+        "work_dir" : "C:/dev/gw9-src/master/ClaimCenter/configuration",
         "url": "http://prd0074/conrw1/cc.git"
       }
     },
@@ -34,7 +34,7 @@
       "code": "pc-configuration",
       "description": "PolicyCenter",
       "conf": {
-        "work_dir": "../../gw9-src/PolicyCenter/modules/configuration",
+        "work_dir": "C:/dev/gw9-src/master/PolicyCenter/configuration",
         "url": "http://prd0074/conrw1/pc.git"
       }
     }
