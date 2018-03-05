@@ -21,6 +21,22 @@
         "work_dir" : "../../gw9-src/BillingCenter/modules/configuration",
         "url": "http://prd0074/conrw1/bc.git"
       }
+    },
+    {
+      "code" : "cc-configuration",
+      "description" : "ClaimCenter",
+      "conf": {
+        "work_dir" : "../../gw9-src/ClaimCenter/modules/configuration",
+        "url": "http://prd0074/conrw1/cc.git"
+      }
+    },
+    {
+      "code": "pc-configuration",
+      "description": "PolicyCenter",
+      "conf": {
+        "work_dir": "../../gw9-src/PolicyCenter/modules/configuration",
+        "url": "http://prd0074/conrw1/pc.git"
+      }
     }
   ]
 }
