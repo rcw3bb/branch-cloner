@@ -1,9 +1,10 @@
 {
   "command-options" : {
-    "commands": "commands.json",
+    "commands": "gitclient.json",
     "repositories": "repositories.json",
     "mode": "update",
     "group": true,
-    "clean": false
+    "clean": false,
+    "inwd" : false
   }
 }

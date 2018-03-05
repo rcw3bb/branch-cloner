@@ -1,3 +1,4 @@
 .idea/workspace.xml
 .idea/BranchCloner.iml
 Gemfile.lock
+logs/

@@ -2,7 +2,7 @@ require_relative 'config'
 require 'optparse'
 
 module BranchCloner
-  Options = Struct.new(:commands, :repositories, :mode, :group, :clean)
+  Options = Struct.new(:commands, :repositories, :mode, :group, :clean, :inwd)
 
   class Parser
 
@@ -12,10 +12,11 @@ module BranchCloner
     ATTR_MODE = 'mode'
     ATTR_GROUP = 'group'
     ATTR_CLEAN = 'clean'
+    ATTR_INWD = 'inwd'
 
     @@CONF_DIR = 'conf'
 
-    @version = '0.3.1'
+    @version = '0.4.0'
     @program_name = 'Branch Cloner'
     @basename = Pathname.new($0).basename
 
@@ -54,6 +55,10 @@ module BranchCloner
           args.clean = true
         end
 
+        opts.on("-w", "--in-workdir", "Execute a command in the work directory.") do
+          args.inwd = true
+        end
+
         opts.on("-h", "--help", "Prints this help.") do
           puts opts
           exit
@@ -69,6 +74,7 @@ module BranchCloner
       args.mode = @default_options[ATTR_MODE]                   if args.mode==nil
       args.group = @default_options[ATTR_GROUP]                 if args.group==nil
       args.clean = @default_options[ATTR_CLEAN]                 if (args.clean==nil || args.mode==BranchCloner::Config::CMD_UPDATE)
+      args.inwd = @default_options[ATTR_INWD]                   if args.inwd==nil
 
       return args
     end

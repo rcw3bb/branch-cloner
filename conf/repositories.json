@@ -1,44 +1,25 @@
 {
   "default_repository_conf" : {
-    "work_dir" : "../../rc/3.1.10.0",
+    "work_dir" : "../../gw9-src/",
     "url": "url",
     "username" : "username",
     "password" : "password"
   },
   "repositories" : [
     {
-      "code" : "ab",
+      "code" : "ab-configuration",
       "description" : "ContactManager",
       "conf": {
-        "url": "http://dev0005:8091/fmg/AB/8.0/branches/base_3.1.10.0-RC1"
+        "work_dir" : "../../gw9-src/ContactManager/modules/configuration",
+        "url": "http://prd0074/conrw1/ab.git"
       }
     },
     {
-      "code" : "bc",
+      "code" : "bc-configuration",
       "description" : "BillingCenter",
       "conf": {
-        "url": "http://dev0005:8091/fmg/BC/7.0/branches/base_3.1.10.0-RC1"
-      }
-    },    
-    {
-      "code" : "cc",
-      "description" : "ClaimCenter",
-      "conf": {
-        "url": "http://dev0005:8091/fmg/CC/8.0/branches/base_3.1.10.0-RC1"
-      }
-    },
-    {
-      "code" : "pc",
-      "description" : "PolicyCenter",
-      "conf": {
-        "url": "http://dev0005:8091/fmg/PC/7.0/branches/base_3.1.10.0-RC1"
-      }
-    },
-    {
-      "code" : "shared",
-      "description" : "Shared",
-      "conf": {
-        "url": "http://dev0005:8091/fmg/Shared/7.0/branches/base_3.1.10.0-RC1"
+        "work_dir" : "../../gw9-src/BillingCenter/modules/configuration",
+        "url": "http://prd0074/conrw1/bc.git"
       }
     }
   ]

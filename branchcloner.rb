@@ -53,7 +53,7 @@ def self.processRepo(cfg, options, repo)
   LOG.info "Processing <<< #{description} >>>"
   LOG.info cmd
 
-  Open3.popen3(cmd) do |stdin, stdout, stderr, wait_thr|
+  Open3.popen3(cmd, :chdir=> (options.inwd ? work_dir : '.')) do |stdin, stdout, stderr, wait_thr|
     while line = stdout.gets
       LOG.debug line.chomp
     end

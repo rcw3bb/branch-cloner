@@ -1,0 +1,13 @@
+{
+  "bin-1" : "C:/Program Files/Git/cmd/git.exe",
+  "command" : {
+    "checkout": {
+      "cmd" : "bin-1",
+      "args" : "clone \"%url%\" \"%work_dir%\""
+    },
+    "update": {
+      "cmd" : "bin-1",
+      "args" : "pull"
+    }
+  }
+}
