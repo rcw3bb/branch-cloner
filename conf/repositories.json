@@ -7,11 +7,19 @@
   },
   "repositories" : [
     {
+      "code" : "common",
+      "description" : "Common",
+      "conf": {
+        "work_dir" : "C:/dev/gw9-src/master/Common",
+        "url": "https://<username>:<token>@accapplications.visualstudio.com/GuideWire/_git/Common"
+      }
+    },
+    {
       "code" : "ab-configuration",
       "description" : "ContactManager",
       "conf": {
         "work_dir" : "C:/dev/gw9-src/master/ContactManager/configuration",
-        "url": "http://prd0074/conrw1/ab.git"
+        "url": "https://<username>:<token>@accapplications.visualstudio.com/GuideWire/_git/ContactManager"
       }
     },
     {
@@ -19,15 +27,7 @@
       "description" : "BillingCenter",
       "conf": {
         "work_dir" : "C:/dev/gw9-src/master/BillingCenter/configuration",
-        "url": "http://prd0074/conrw1/bc.git"
-      }
-    },
-    {
-      "code" : "cc-configuration",
-      "description" : "ClaimCenter",
-      "conf": {
-        "work_dir" : "C:/dev/gw9-src/master/ClaimCenter/configuration",
-        "url": "http://prd0074/conrw1/cc.git"
+        "url": "https://<username>:<token>@accapplications.visualstudio.com/GuideWire/_git/BillingCenter"
       }
     },
     {
@@ -35,7 +35,7 @@
       "description": "PolicyCenter",
       "conf": {
         "work_dir": "C:/dev/gw9-src/master/PolicyCenter/configuration",
-        "url": "http://prd0074/conrw1/pc.git"
+        "url": "https://<username>:<token>@accapplications.visualstudio.com/GuideWire/_git/PolicyCenter"
       }
     }
   ]
